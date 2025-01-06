@@ -11,17 +11,11 @@ on:
 
 jobs:
   trigger-application-workflow:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Trigger Application Workflow
-        uses: owner/repo-app-code/.github/workflows/application-workflow.yml@main
-        with:
-          environment: ${{ inputs.environment }}
+    uses: owner/repo-app-code/.github/workflows/application-workflow.yml@main
+    with:
+      environment: ${{ inputs.environment }}
 
   trigger-docker-workflow:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Trigger Docker Workflow
-        uses: owner/repo-docker-files/.github/workflows/docker-workflow.yml@main
-        with:
-          tag: ${{ inputs.tag }}
+    uses: owner/repo-docker-files/.github/workflows/docker-workflow.yml@main
+    with:
+      tag: ${{ inputs.tag }}
