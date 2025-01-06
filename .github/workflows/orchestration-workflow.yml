@@ -1,0 +1,27 @@
+name: Orchestrate Workflows
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        required: true
+        description: 'Environment to deploy (e.g., dev, staging, prod)'
+      tag:
+        required: true
+        description: 'Docker tag to use'
+
+jobs:
+  trigger-application-workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Application Workflow
+        uses: owner/repo-app-code/.github/workflows/application-workflow.yml@main
+        with:
+          environment: ${{ inputs.environment }}
+
+  trigger-docker-workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Docker Workflow
+        uses: owner/repo-docker-files/.github/workflows/docker-workflow.yml@main
+        with:
+          tag: ${{ inputs.tag }}
