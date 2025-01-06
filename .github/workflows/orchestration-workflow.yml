@@ -1,5 +1,9 @@
 name: Orchestrate Workflows
+
 on:
+  push:
+    branches:
+      - main  # Specify the branch to trigger on push
   workflow_dispatch:
     inputs:
       environment:
