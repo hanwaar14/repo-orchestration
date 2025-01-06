@@ -3,7 +3,7 @@ name: Orchestrate Workflows
 on:
   push:
     branches:
-      - main  # Specify the branch to trigger on push
+      - main
   workflow_dispatch:
     inputs:
       environment:
@@ -15,11 +15,11 @@ on:
 
 jobs:
   trigger-application-workflow:
-    uses: owner/repo-app-code/.github/workflows/application-workflow.yml@main
+    uses: hanwaar14/repo-app-code/.github/workflows/application-workflow.yml@main
     with:
       environment: ${{ inputs.environment }}
 
   trigger-docker-workflow:
-    uses: owner/repo-docker-files/.github/workflows/docker-workflow.yml@main
+    uses: hanwaar14/repo-docker-files/.github/workflows/docker-workflow.yml@main
     with:
       tag: ${{ inputs.tag }}
